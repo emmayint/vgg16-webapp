@@ -64,6 +64,7 @@
             </form>
             <br>
 
+            <%if(category!=""){%>
             <form class="form" method="POST" action="/upload/createFile" enctype="multipart/form-data" >
                     <label for="file">2. upload file to this category <%=  category%></label>
                     <input
@@ -73,14 +74,12 @@
                               directory
                               multiple
                     >
-                            <!-- <input name="file" type="file" /> -->
-
                 <button class="btn btn-lg btn-primary btn-block" type="submit">
                     upload files
                 </button>
 
             </form>
-            
+            <%}%>
 
 
         </div>
