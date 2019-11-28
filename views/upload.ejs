@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Add datasets</title>
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <link rel='stylesheet' href='/stylesheets/style.css'/>
+    <link rel="stylesheet" href="/stylesheets/viewexperiment.css">
+
+</head>
+<body>
+    
+<div class="container">
+    <!-- Navigation Bar -->
+    <div class="container">
+        <nav class="navbar navbar-default navbar-fixed-top">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="/home">Home </a>
+                </div>
+                <div class="collapse navbar-collapse" id="myNavbar">
+                    <ul class="nav navbar-nav navbar-right">
+                        <li>
+                            <form class="form" id="form" method="POST" action="/logout">
+                                <a href="/logout"
+                                   onclick="document.getElementById('form').submit(); return false;"></span>
+                                    Logout</a></a>
+                            </form>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+    </div>
+<br>
+<br>
+    <div class="row divtop">
+        <h1 class="text-center login-title">1. Add categories </h1>
+        <p>your categories:</p>
+        <ul>
+                <% files.forEach(function(file){ %>
+                    <form class="form" id="<%= file %>" method="POST" action="/upload/createDir" enctype="application/x-www-form-urlencoded" >
+                        <li><input type="submit" name="category" value = <%= file %> /> </li>
+                        </a>
+                    </form> 
+                    <br>
+                <% })%>
+              </ul>
+        <div class="account-wall well col-md-push-3 col-md-6">
+        <!-- <form class="form" method="POST" action="/upload" enctype="application/x-www-form-urlencoded" > -->
+            <!-- the above will pass the text input, but cant upload the file -->
+            <form class="form" method="POST" action="/upload/createDir" enctype="application/x-www-form-urlencoded" >
+                <label for="category">1. Add a category (please don't use space in the category name)</label>
+                <input type="text" class="form-control" placeholder="category name" name="category" required autofocus>
+                <br>
+                <button class="btn btn-lg btn-primary btn-block" type="submit">
+                    Add category
+                </button>
+            </form>
+            <br>
+
+            <form class="form" method="POST" action="/upload/createFile" enctype="multipart/form-data" >
+                    <label for="file">2. upload file to this category <%=  category%></label>
+                    <input
+                              name="file"
+                              type="file"
+                              webkitdirectory
+                              directory
+                              multiple
+                    >
+                            <!-- <input name="file" type="file" /> -->
+
+                <button class="btn btn-lg btn-primary btn-block" type="submit">
+                    upload files
+                </button>
+
+            </form>
+            
+
+
+        </div>
+
+    </div>
+</div>
+<label for="back">back to categories</label>
+            <button type = "button" name = "back">go back</button>
+            <br>
+            <label for="next">upload images</label>
+            <button type = "button" neme = "next">next</button>
+</body>
+</html>
