@@ -42,30 +42,38 @@
     </div>
 <br>
 <br>
-    <div class="row divtop">
+    <div class="add-categories">
         <h1 class="text-center login-title">1. Add categories </h1>
-        <p>your categories:</p>
-        <ul>
-                <% files.forEach(function(file){ %>
-                    <form class="form" id="<%= file %>" method="POST" action="/upload/createDir" enctype="application/x-www-form-urlencoded" >
-                        <li><i class="icon fa fa-folder-o fa-2x"></i><input type="submit" name="category" value = <%= file %> /> </li>
-                    </form> 
-                    <br>
-                <% })%>
-              </ul>
         <div class="account-wall well col-md-push-3 col-md-6">
-        <!-- <form class="form" method="POST" action="/upload" enctype="application/x-www-form-urlencoded" > -->
-            <!-- the above will pass the text input, but cant upload the file -->
-            <form class="form" method="POST" action="/upload/createDir" enctype="application/x-www-form-urlencoded" >
-                <label for="category">1. Add a category (please don't use space in the category name)</label>
-                <input type="text" class="form-control" placeholder="category name" name="category" required autofocus>
-                <br>
-                <button class="btn btn-lg btn-primary btn-block" type="submit">
-                    Add category
-                </button>
-            </form>
-            <br>
-
+            <!-- <form class="form" method="POST" action="/upload" enctype="application/x-www-form-urlencoded" > -->
+                <!-- the above will pass the text input, but cant upload the file -->
+                <label for="category">1. Add a category (please don't use space in the category name), or select from your existing categories.</label>
+                <!-- <p>your categories:</p> -->
+                <div class="category-container">
+                    <% files.forEach(function(file){ %>
+                        <form class="form category-item" id="<%= file %>" method="POST" action="/upload/createDir" enctype="application/x-www-form-urlencoded" >
+                            <button class="category-item-button" type="submit" name="category" value=<%= file %>>
+                                <i class="icon fa fa-folder-o category-item-icon"></i>
+                                <span class="category-item-text"><%= file %></span>
+                            </button>
+                            
+                            <!-- <i class="icon fa fa-folder-o fa-2x"></i><input type="submit" name="category" value = <%= file %> /> -->
+                        </form> 
+                        <br>
+                        <% })%>
+                    </div>
+                    <form class="form" method="POST" action="/upload/createDir" enctype="application/x-www-form-urlencoded" >
+                        <div class="new-category-input-container">
+                            <input class="new-category-input" type="text" class="form-control" placeholder="category name" name="category" required autofocus>
+                            <br>
+                            <button class="new-category-button btn-primary " type="submit">
+                                Add category
+                            </button>
+                        </div>
+                    </form>
+                </div>
+        <br>
+        <div class="account-wall well col-md-push-3 col-md-6">
             <form class="form" method="POST" action="/upload/createFile" enctype="multipart/form-data" >
                     <label for="file">2. upload file to this category <%=  category%></label>
                     <input
