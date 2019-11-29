@@ -39,16 +39,26 @@
 }
   
 .new-category-input {
-    font-size: .875rem;
+    font-size: 1.5rem;
     line-height: 3rem;
     width: 70%;
+    padding-left: 10px;
 }
   
 .new-category-button {
-    font-size: .75rem;
+    font-size: 1.5rem;
     line-height: 3rem;
     border: 1.5px solid $color-primary;
     background-color: $color-primary;
     color: $white;
     width: 25%;
+}
+
+.selected-category-text {
+    margin-top: 2rem;
+}
+
+.choose-files-button {
+    margin-top: 2rem;
+    margin-bottom: 2rem;
 }
