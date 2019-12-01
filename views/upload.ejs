@@ -3,12 +3,11 @@
 <head>
     <title>Add datasets</title>
     <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-    <link rel='stylesheet' href='/stylesheets/style.css'/>
-    <link rel="stylesheet" href="/stylesheets/viewexperiment.css">
-
+    <!-- <link rel='stylesheet' href='/stylesheets/style.css'/>
+    <link rel="stylesheet" href="/stylesheets/viewexperiment.css"> -->
 </head>
+
 <body>
-    
 <div class="container">
     <!-- Navigation Bar -->
     <div class="container">
@@ -28,7 +27,7 @@
                             <form class="form" id="form" method="POST" action="/logout">
                                 <a href="/logout"
                                    onclick="document.getElementById('form').submit(); return false;"></span>
-                                    Logout</a></a>
+                                    Logout</a> 
                             </form>
                         </li>
                     </ul>
@@ -40,13 +39,12 @@
 <br>
 <br>
     <div class="row divtop">
-        <h1 class="text-center login-title">1. Add categories </h1>
+        <h1 class="text-center login-title">Step 2. Add data </h1>
         <p>your categories:</p>
         <ul>
                 <% files.forEach(function(file){ %>
                     <form class="form" id="<%= file %>" method="POST" action="/upload/createDir" enctype="application/x-www-form-urlencoded" >
                         <li><input type="submit" name="category" value = <%= file %> /> </li>
-                        </a>
                     </form> 
                     <br>
                 <% })%>
@@ -55,7 +53,7 @@
         <!-- <form class="form" method="POST" action="/upload" enctype="application/x-www-form-urlencoded" > -->
             <!-- the above will pass the text input, but cant upload the file -->
             <form class="form" method="POST" action="/upload/createDir" enctype="application/x-www-form-urlencoded" >
-                <label for="category">1. Add a category (please don't use space in the category name)</label>
+                <label for="category">Add a category (please don't use space in the category name)</label>
                 <input type="text" class="form-control" placeholder="category name" name="category" required autofocus>
                 <br>
                 <button class="btn btn-lg btn-primary btn-block" type="submit">
@@ -66,7 +64,7 @@
 
             <%if(category!=""){%>
             <form class="form" method="POST" action="/upload/createFile" enctype="multipart/form-data" >
-                    <label for="file">2. upload file to this category <%=  category%></label>
+                    <label for="file">Upload file to this category <%=  category%></label>
                     <input
                               name="file"
                               type="file"
@@ -76,20 +74,14 @@
                     >
                 <button class="btn btn-lg btn-primary btn-block" type="submit">
                     upload files
-                </button>
-
+                </button> s
             </form>
             <%}%>
-
-
         </div>
-
     </div>
 </div>
-<label for="back">back to categories</label>
-            <button type = "button" name = "back">go back</button>
+            <a href="/selectModel">Go back to select model</a>
             <br>
-            <label for="next">upload images</label>
-            <button type = "button" neme = "next">next</button>
+            <a href="/params">next </a>
 </body>
 </html>
