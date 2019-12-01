@@ -1,0 +1,64 @@
+.add-categories {
+    display: flex;
+    flex-direction: column;
+}
+
+
+.category-container {
+    display: flex;
+    padding: 2rem;
+    flex-wrap: wrap;
+    align-items: center
+}
+
+.category-item {
+    width: 50%;
+}
+
+.category-item-button {
+    border: none;
+    background-color: transparent;
+    font-size: 1.75rem;
+}
+
+.category-item-icon {
+    padding-top: 5px;
+}
+
+.category-item-text {
+    padding-bottom: 5px;
+    background-color: transparent;
+}
+
+.new-category-input-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: auto;
+    margin-right: auto;
+}
+  
+.new-category-input {
+    font-size: 1.5rem;
+    line-height: 3rem;
+    width: 70%;
+    padding-left: 10px;
+}
+  
+.new-category-button {
+    font-size: 1.5rem;
+    line-height: 3rem;
+    border: 1.5px solid $color-primary;
+    background-color: $color-primary;
+    color: $white;
+    width: 25%;
+}
+
+.selected-category-text {
+    margin-top: 2rem;
+}
+
+.choose-files-button {
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+}
