@@ -14,11 +14,13 @@ app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "ejs");
 
 let uploadRouter = require("./routes/upload");
+let selectModelRouter = require("./routes/selectModel");
 
 app.use("/upload", uploadRouter);
+app.use("/selectModel", selectModelRouter);
 
 app.get("/", (req, res) => {
-  res.send("train your neural network");
+  res.render("home");
 });
 
 app.listen(8000, () => {
