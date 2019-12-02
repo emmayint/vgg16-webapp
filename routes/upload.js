@@ -51,7 +51,8 @@ router.post("/createDir", function(req, res) {
     if (err) {
       console.log(err.message);
     } else {
-      res.render("upload", { files: files, category: category });
+      res.redirect("/upload");
+      // res.render("upload", { files: files, category: category });
     }
   });
 });
@@ -63,7 +64,8 @@ router.post("/createFile", uploadTrain.array("file", 40), function(req, res) {
     if (err) {
       console.log(err.message);
     } else {
-      res.render("upload", { files: files, category: category });
+      res.redirect("/upload");
+      // res.render("upload", { files: files, category: category });
     }
   });
 });
