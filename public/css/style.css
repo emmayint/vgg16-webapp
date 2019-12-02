@@ -75,6 +75,10 @@ body {
     margin-top: 2rem;
 }
 
+.selected-category {
+    font-weight: 800;
+}
+
 .choose-files-button {
     margin-top: 2rem;
     margin-bottom: 2rem;
@@ -87,7 +91,6 @@ body {
 .footer-nav {
     display: flex;
     justify-content: flex-end;
-    margin-top: 1rem;
 }
 
 .nav-button {
@@ -200,3 +203,18 @@ body {
 
     flex-grow: 1;
 } */
+
+.params-form {
+    max-width: 400px;
+    margin: 3rem auto 1rem auto;   
+}
+
+.params-submit-button {
+    max-width: 400px;
+    margin: auto;
+}
+
+.name-model-form {
+    max-width: 400px;
+    margin: 3rem auto 1rem auto;  
+}
