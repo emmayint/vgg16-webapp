@@ -9,6 +9,7 @@
         />
         <!-- <link rel='stylesheet' href='/stylesheets/style.css'/>
             <link rel="stylesheet" href="/stylesheets/viewexperiment.css"> -->
+        <link href="/css/style.css" rel="stylesheet" type="text/css">
     </head>
 
   <body>
@@ -24,7 +25,7 @@
                             <span class="icon-bar"></span>
                         </button>
                         <a class="navbar-brand" href="/home">Home </a>
-                    </div>
+                    </div> 
                     <div class="collapse navbar-collapse" id="myNavbar">
                         <ul class="nav navbar-nav navbar-right">
                             <li>
@@ -41,19 +42,49 @@
         </div>
         <br>
         <br>
-        <div class="row divtop">
-            <h1 class="text-center login-title">Step 1. Choose a model type </h1>
-
-            <label for="VGG16">VGG16</label><br>
-            <button type = "button" name = "VGG16">Deep Convolutional Networks for Large-Scale Image Recognition</button>
-            <br>
-            <label for="CNN">CNN</label><br>
-            <button type = "button" neme = "CNN">multi-layer neural networks to recognize visual patterns directly from pixel images with minimal preprocessing</button>
-            <br>
-            <br>
-            <a href="/">cancel </a>
-            <br>
-            <a href="/upload">next </a>
+        <div class="content-container row divtop">
+            <h1 class="step-title">1. Choose a model type </h1>
+            <div class="step-container">
+                <h4 class="step-directions">Select a model type below.</h4>
+                <div class="model-type-button-container">
+                    <!-- <label for="VGG16">VGG16</label><br> -->
+                    <button class="model-type-button" type="button" name="VGG16">
+                        <p class="model-type-button-name">
+                            VGG16
+                        </p>
+                        <p class="model-type-button-description">
+                            Deep Convolutional Networks for Large-Scale Image Recognition
+                        </p>
+                    </button>
+                    <br>
+                    <!-- <label for="CNN">CNN</label><br> -->
+                    <button class="model-type-button" type="button" name="CNN">
+                        <p class="model-type-button-name">
+                            CNN
+                        </p>
+                        <p class="model-type-button-description">
+                            multi-layer neural networks to recognize visual patterns directly from pixel images with minimal preprocessing
+                        </p>
+                    </button>
+                </div>
+                <!-- <br>
+                <br>
+                <a href="/">cancel </a>
+                <br>
+                <a href="/upload">next </a> -->
+            </div>
+            <div class="footer-nav">
+                <a href="/">
+                    <button class="nav-button">
+                        Cancel
+                    </button>
+                </a>
+                <a href="/upload">
+                    <button class="nav-button next-button">
+                        Next
+                    </button>
+                </a>
+            </div>
         </div>
   </body>
 </html>

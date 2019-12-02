@@ -38,63 +38,78 @@
         </nav>
 
     </div>
-<br>
-<br>
-    <div class="add-categories">
-        <h1 class="text-center login-title">Upload Files </h1>
-        <div class="account-wall well col-md-push-3 col-md-6">
-            <!-- <form class="form" method="POST" action="/upload" enctype="application/x-www-form-urlencoded" > -->
-            <!-- the above will pass the text input, but cant upload the file -->
-            <label for="category">1. Select category or add new category below. Category names should not contain spaces.</label>
-            <!-- <p>your categories:</p> -->
-            <div class="category-container">
-                <% files.forEach(function(file){ %>
-                    <form class="form category-item" id="<%= file %>" method="POST" action="/upload/createDir" enctype="application/x-www-form-urlencoded" >
-                        <button class="category-item-button" type="submit" name="category" value=<%= file %>>
-                            <i class="icon fa fa-folder-o category-item-icon"></i>
-                            <span class="category-item-text"><%= file %></span>
-                        </button>
-                        
-                        <!-- <i class="icon fa fa-folder-o fa-2x"></i><input type="submit" name="category" value = <%= file %> /> -->
-                    </form> 
-                    <br>
-                <% })%>
-            </div>
-            <form class="form" method="POST" action="/upload/createDir" enctype="application/x-www-form-urlencoded" >
-                <div class="new-category-input-container">
-                    <input class="new-category-input" type="text" class="form-control" placeholder="category name" name="category" required autofocus>
-                    <br>
-                    <button class="new-category-button btn-primary " type="submit">
-                        Add category
-                    </button>
+    <br>
+    <br>
+    <div class="add-categories content-container">
+        <h1 class="step-title">2. Upload files</h1>
+        <div class="upload-steps-container">
+            <div class="step-container upload-container">
+                <!-- <form class="form" method="POST" action="/upload" enctype="application/x-www-form-urlencoded" > -->
+                <!-- the above will pass the text input, but cant upload the file -->
+                <h4 class="step-directions-upload">1. Select category.</h4>
+                
+                <!-- <p>your categories:</p> -->
+                <div class="category-container">
+                    <% files.forEach(function(file){ %>
+                        <form class="form category-item" id="<%= file %>" method="POST" action="/upload/createDir" enctype="application/x-www-form-urlencoded" >
+                            <button class="category-item-button" type="submit" name="category" value=<%= file %>>
+                                <i class="icon fa fa-folder-o category-item-icon"></i>
+                                <span class="category-item-text"><%= file %></span>
+                            </button>
+                            
+                            <!-- <i class="icon fa fa-folder-o fa-2x"></i><input type="submit" name="category" value = <%= file %> /> -->
+                        </form> 
+                        <br>
+                    <% })%>
                 </div>
-            </form>
-            <p class="selected-category-text"> Selected category: <%=  category%></p> 
+                <label class="select-category-text" for="category">Choose existing category above, or add new category below. NOTE: category names should not contain spaces.</label>
+                <form class="form" method="POST" action="/upload/createDir" enctype="application/x-www-form-urlencoded" >
+                    <div class="new-category-input-container">
+                        <input class="new-category-input" type="text" class="form-control" placeholder="category name" name="category" required autofocus>
+                        <br>
+                        <button class="new-category-button" type="submit">
+                            Add
+                        </button>
+                    </div>
+                </form>
+            </div>
+            <div class="step-container upload-container">
+                <h4 class="step-directions-upload">2. Upload file(s).</h4>
+                <form class="form upload-form" method="POST" action="/upload/createFile" enctype="multipart/form-data" >
+                    <!-- <label for="file">2. Select file(s) to upload. <%=  category%></label> -->
+                    <!-- <div class="upload-container-inputs"> -->
+                        <input
+                            class="choose-files-button"
+                            name="file"
+                            type="file"
+                            multiple
+                        >
+                        <!-- <br>
+                        <br> -->
+                        <!-- <input name="file" type="file" /> -->
+                        <p class="selected-category-text"> Files will be uploaded to category: <%=  category%></p> 
+                        <button class="btn btn-lg btn-primary btn-block upload-files-button" type="submit">
+                            upload files
+                        </button>
+                    <!-- </div> -->
+                </form>
+            </div>
         </div>
-        <br>
-        <%if(category!=""){%>
-        <div class="account-wall well col-md-push-3 col-md-6">
-            <form class="form" method="POST" action="/upload/createFile" enctype="multipart/form-data" >
-                <label for="file">2. Select file(s) to upload. <%=  category%></label>
-                <input
-                    class="choose-files-button"
-                    name="file"
-                    type="file"
-                    webkitdirectory
-                    directory
-                    multiple
-                >
-                <!-- <input name="file" type="file" /> -->
-                <button class="btn btn-lg btn-primary btn-block" type="submit">
-                    upload files
+
+        <div class="footer-nav">
+            <a href="/selectModel">
+                <button class="nav-button">
+                    Prev
                 </button>
-            </form>
+            </a>
+            <a href="/params">
+                <button class="nav-button next-button">
+                    Next
+                </button>
+            </a>
         </div>
-        <%}%>
+
     </div>
 </div>
-            <a href="/selectModel">Go back to select model</a>
-            <br>
-            <a href="/params">next </a>
 </body>
 </html>
