@@ -41,11 +41,11 @@
 <br>
 <br>
     <div class="add-categories">
-        <h1 class="text-center login-title">Upload Files </h1>
+        <h1 class="text-center login-title">Step 2. Upload data </h1>
         <div class="account-wall well col-md-push-3 col-md-6">
             <!-- <form class="form" method="POST" action="/upload" enctype="application/x-www-form-urlencoded" > -->
             <!-- the above will pass the text input, but cant upload the file -->
-            <label for="category">1. Select category or add new category below. Category names should not contain spaces.</label>
+            <label for="category">Add new category below. Category names should not contain spaces.</label>
             <!-- <p>your categories:</p> -->
             <div class="category-container">
                 <% files.forEach(function(file){ %>
@@ -75,7 +75,7 @@
         <%if(category!=""){%>
         <div class="account-wall well col-md-push-3 col-md-6">
             <form class="form" method="POST" action="/upload/createFile" enctype="multipart/form-data" >
-                <label for="file">2. Select file(s) to upload. <%=  category%></label>
+                <label for="file">2. Select file(s) to upload to <%=  category%>, or click on the category you want to add files to</label>
                 <input
                     class="choose-files-button"
                     name="file"
@@ -91,10 +91,10 @@
             </form>
         </div>
         <%}%>
+      </div>
     </div>
-</div>
-            <a href="/selectModel">Go back to select model</a>
-            <br>
-            <a href="/params">next </a>
+    <a href="/selectModel">Go back to select model</a>
+    <br>
+    <a href="/params">next </a>
 </body>
 </html>

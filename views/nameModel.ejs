@@ -42,24 +42,19 @@
         <br>
         <br>
         <div class="container">
-                <h1 class="text-center login-title">Step 3. Customize model inputs </h1>
-
-            <form method="POST" action="/params">
-                epoch: <input type="number" name="epoch" min="1" max="20" value= <%= epoch%>>
+            <h1 class="text-center login-title">Step 4. Name and train your model </h1>
+            <form class="form" method="POST" action="/nameModel" >
+                <label for="modelName">name of your model</label><br>
+                <input type="text" class="form-control" placeholder="name of your model" name="modelName" required autofocus>
                 <br>
-                <br>
-                batch_size: <input type="number" name="batch_size" min="1" max="100" value= <%= batch_size%>>
-                <br>
-                <br>
-                steps_per_epoch: <input type="number" name="steps_per_epoch" min="1" max="100" value= <%= steps_per_epoch%>>
-                <br>
-                <br>
-                <input type="submit">
-              </form>
+                <button class="new-category-button btn-primary " type="submit">
+                    submit
+                </button>
+            </form>
         </div>
-        <br>
-        <a href="/upload">Go back to upload data</a>
-        <br>
-        <a href="/nameModel">next </a>
+    </div>
+    <br>
+    <a href="/params">Go back to customize input</a>
+  </body>
 
-    </body>
+</html>

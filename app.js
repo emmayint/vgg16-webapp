@@ -15,9 +15,13 @@ app.set("view engine", "ejs");
 
 let uploadRouter = require("./routes/upload");
 let selectModelRouter = require("./routes/selectModel");
+let paramsRouter = require("./routes/params");
+let nameModelRouter = require("./routes/nameModel");
 
 app.use("/upload", uploadRouter);
 app.use("/selectModel", selectModelRouter);
+app.use("/params", paramsRouter);
+app.use("/nameModel", nameModelRouter);
 
 app.get("/", (req, res) => {
   res.render("home");
