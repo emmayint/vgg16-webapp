@@ -9,11 +9,12 @@
         />
         <!-- <link rel='stylesheet' href='/stylesheets/style.css'/>
             <link rel="stylesheet" href="/stylesheets/viewexperiment.css"> -->
+            <link href="/css/style.css" rel="stylesheet" type="text/css">
     </head>
 
   <body>
     <div class="container">
-        <!-- Navigation Bar -->
+        <!-- Navigation Bar --> 
         <div class="container">
             <nav class="navbar navbar-default navbar-fixed-top">
                 <div class="container">
@@ -41,25 +42,39 @@
         </div>
         <br>
         <br>
-        <div class="container">
-                <h1 class="text-center login-title">Step 3. Customize model inputs </h1>
-
-            <form method="POST" action="/params">
-                epoch: <input type="number" name="epoch" min="1" max="20" value= <%= epoch%>>
-                <br>
-                <br>
-                batch_size: <input type="number" name="batch_size" min="1" max="100" value= <%= batch_size%>>
-                <br>
-                <br>
-                steps_per_epoch: <input type="number" name="steps_per_epoch" min="1" max="100" value= <%= steps_per_epoch%>>
-                <br>
-                <br>
-                <input type="submit">
-              </form>
+        <div class="content-container row divtop">
+            <h1 class="step-title">3. Customize model inputs </h1>
+            <div class="step-container">
+                <h4 class="step-directions">Customize model inputs below (optional)</h4>
+                <form  class="params-form" method="POST" action="/params">
+                    epoch: <input type="number" name="epoch" min="1" max="20" value= <%= epoch%>>
+                    <br>
+                    <br>
+                    batch_size: <input type="number" name="batch_size" min="1" max="100" value= <%= batch_size%>>
+                    <br>
+                    <br>
+                    steps_per_epoch: <input type="number" name="steps_per_epoch" min="1" max="100" value= <%= steps_per_epoch%>>
+                    <br>
+                    <br>
+                    <button class="params-submit-button btn btn-lg btn-primary btn-block" type="submit">Submit</button>
+                </form>
+            </div>
+            <!-- <br>
+            <a href="/upload">Go back to upload data</a>
+            <br>
+            <a href="/nameModel">next </a> -->
+            <div class="footer-nav">
+                    <a href="/upload">
+                        <button class="nav-button">
+                            Prev
+                        </button>
+                    </a>
+                    <a href="/nameModel">
+                        <button class="nav-button next-button">
+                            Next
+                        </button>
+                    </a>
+            </div>
         </div>
-        <br>
-        <a href="/upload">Go back to upload data</a>
-        <br>
-        <a href="/nameModel">next </a>
-
-    </body>
+    </div>
+</body>

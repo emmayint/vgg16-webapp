@@ -9,6 +9,7 @@
         />
         <!-- <link rel='stylesheet' href='/stylesheets/style.css'/>
             <link rel="stylesheet" href="/stylesheets/viewexperiment.css"> -->
+            <link href="/css/style.css" rel="stylesheet" type="text/css">
     </head>
 
   <body>
@@ -41,20 +42,35 @@
         </div>
         <br>
         <br>
-        <div class="container">
-            <h1 class="text-center login-title">Step 4. Name and train your model </h1>
-            <form class="form" method="POST" action="/nameModel" >
-                <label for="modelName">name of your model</label><br>
-                <input type="text" class="form-control" placeholder="name of your model" name="modelName" required autofocus>
-                <br>
-                <button class="new-category-button btn-primary " type="submit">
-                    submit
-                </button>
-            </form>
+        <div class="content-container">
+            <h1 class="step-title">4. Name and train your model </h1>
+            <div class="step-container">
+                <h4 class="step-directions">Name and train your model</h4>
+                <form class="name-model-form" method="POST" action="/nameModel" >
+                    <label for="modelName">name of your model</label><br>
+                    <input type="text" class="form-control" placeholder="name of your model" name="modelName" required autofocus>
+                    <br>
+                    <button class="name-model-submit-button btn btn-lg btn-primary btn-block" type="submit">
+                        submit
+                    </button>
+                </form>
+            </div>
+            <div class="footer-nav">
+                <a href="/params">
+                    <button class="nav-button">
+                        Prev
+                    </button>
+                </a>
+                    <!-- <a href="/nameModel">
+                        <button class="nav-button next-button">
+                            Next
+                        </button>
+                    </a> -->
+            </div>
         </div>
     </div>
-    <br>
-    <a href="/params">Go back to customize input</a>
+    <!-- <br>
+    <a href="/params">Go back to customize input</a> -->
   </body>
 
 </html>

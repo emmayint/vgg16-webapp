@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Add datasets</title>
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!-- <link rel="stylesheet" href="/stylesheets/viewexperiment.css"> -->
+    <!-- <link rel='stylesheet' type="text/css" href='../stylesheets/styles.css'/> -->
+    <link href="/css/style.css" rel="stylesheet" type="text/css">
+
+<body>
+<div class="container">
+    <!-- Navigation Bar -->
+    <div class="container">
+        <nav class="navbar navbar-default navbar-fixed-top">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="/home">Home </a>
+                </div>
+                <div class="collapse navbar-collapse" id="myNavbar">
+                    <ul class="nav navbar-nav navbar-right">
+                        <li>
+                            <form class="form" id="form" method="POST" action="/logout">
+                                <a href="/logout"
+                                   onclick="document.getElementById('form').submit(); return false;"></span>
+                                    Logout
+                                </a>
+                            </form>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+    </div>
+<br>
+<br>
+    <div class="add-categories">
+        <h1 class="text-center login-title">2. Select Category</h1>
+        <div class="account-wall well col-md-push-3 col-md-6">
+            <!-- <form class="form" method="POST" action="/upload" enctype="application/x-www-form-urlencoded" > -->
+            <!-- the above will pass the text input, but cant upload the file -->
+            <label for="category">1. Select category or add new category below. Category names should not contain spaces.</label>
+            <!-- <p>your categories:</p> -->
+            <div class="category-container">
+                <% files.forEach(function(file){ %>
+                    <form class="form category-item" id="<%= file %>" method="POST" action="/upload/createDir" enctype="application/x-www-form-urlencoded" >
+                        <button class="category-item-button" type="submit" name="category" value=<%= file %>>
+                            <i class="icon fa fa-folder-o category-item-icon"></i>
+                            <span class="category-item-text"><%= file %></span>
+                        </button>
+                        
+                        <!-- <i class="icon fa fa-folder-o fa-2x"></i><input type="submit" name="category" value = <%= file %> /> -->
+                    </form> 
+                    <br>
+                <% })%>
+            </div>
+            <form class="form" method="POST" action="/upload/createDir" enctype="application/x-www-form-urlencoded" >
+                <div class="new-category-input-container">
+                    <input class="new-category-input" type="text" class="form-control" placeholder="category name" name="category" required autofocus>
+                    <br>
+                    <button class="new-category-button btn-primary " type="submit">
+                        Add category
+                    </button>
+                </div>
+            </form>
+            <p class="selected-category-text"> Selected category: <%=  category%></p> 
+        </div>
+        <br>
+    </div>
+</div>
+            <a href="/selectModel">Go back to select model</a>
+            <br>
+            <a href="/params">next </a>
+</body>
+</html>
