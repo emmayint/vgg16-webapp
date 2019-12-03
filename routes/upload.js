@@ -2,8 +2,8 @@ let express = require("express");
 let router = express.Router();
 let multer = require("multer");
 let path = require("path");
-
 var fs = require("fs");
+// const db = require('../database/db');
 
 var uploadDir = "";
 var category = "";
@@ -16,8 +16,6 @@ let uploadTrain = multer({
     },
     filename: (req, file, cb) => {
       console.log(file.originalname);
-      // let ext = path.extname(file.originalname);
-      //   cb(null, file.fieldname + "-" + Date.now().toString() + ".jpg");
       cb(null, path.basename(file.originalname));
     }
   })
@@ -31,6 +29,7 @@ router.get("/", function(req, res) {
     if (err) {
       console.log(err.message);
     } else {
+      console.log("category:", category, "files", files);
       res.render("upload", { category: category, files: files });
     }
   });
@@ -41,7 +40,6 @@ router.post("/createDir", function(req, res) {
   category = req.body.category;
   uploadDir = "./datasets/train/" + category;
   console.log("will upload to ", uploadDir);
-  //   uploadDir = dir;
   if (!fs.existsSync(uploadDir)) {
     fs.mkdirSync(uploadDir, { recursive: true });
   }
@@ -68,6 +66,11 @@ router.post("/createFile", uploadTrain.array("file", 40), function(req, res) {
       // res.render("upload", { files: files, category: category });
     }
   });
+});
+
+router.get("/createFile", function(req, res) {
+  console.log("uploadDir:", uploadDir);
+  res.render("createFile", { uploadDir: uploadDir });
 });
 
 module.exports = router;

@@ -2,11 +2,12 @@
 
 # frontend
 
-css
+upload intuitive
 progress bar
 bottom buttons - <a> tag
 
 # backend:
 
-redirect
-upload page/routes seperation
+display datasets contents
+auth
+connect to db

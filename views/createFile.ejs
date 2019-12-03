@@ -1,0 +1,21 @@
+<h1><%= uploadDir%></h1>
+<h4 class="step-directions-upload">2. Upload file(s).</h4>
+<form
+  class="form upload-form"
+  method="POST"
+  action="/upload/createFile"
+  enctype="multipart/form-data"
+>
+  <input class="choose-files-button" name="file" type="file" multiple />
+
+  <p class="selected-category-text">
+    Files will be uploaded to category:
+    <span class="selected-category"><%= uploadDir%></span>
+  </p>
+  <button
+    class="btn btn-lg btn-primary btn-block upload-files-button"
+    type="submit"
+  >
+    upload files
+  </button>
+</form>
