@@ -36,7 +36,7 @@ router.get("/", function(req, res) {
 });
 
 router.post("/createDir", function(req, res) {
-  console.log("body:", req.body);
+  console.log("post /createDir, ","body:", req.body);
   category = req.body.category;
   uploadDir = "./datasets/train/" + category;
   console.log("will upload to ", uploadDir);
@@ -69,7 +69,7 @@ router.post("/createFile", uploadTrain.array("file", 40), function(req, res) {
 });
 
 router.get("/createFile", function(req, res) {
-  console.log("uploadDir:", uploadDir);
+  console.log("get /createFile,","uploadDir:", uploadDir);
   res.render("createFile", { uploadDir: uploadDir });
 });
 

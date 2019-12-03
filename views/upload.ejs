@@ -51,8 +51,8 @@
                 <!-- <p>your categories:</p> -->
                 <div class="category-container">
                     <% files.forEach(function(file){ %>
-                        <form class="form category-item" id="<%= file %>" method="POST" action="/upload/createDir" enctype="application/x-www-form-urlencoded" onsubmit=" window.open('/upload/createFile', '_blank', 'top=100 left=300,width=800,height=500')">
-                            <button class="category-item-button" type="submit"  name="category" value=<%= file %>  >
+                        <form class="form category-item" id="<%= file %>" method="POST" action="/upload/createDir" enctype="application/x-www-form-urlencoded" onsubmit="window.open('/upload/createFile', '_blank', 'top=100 left=300,width=800,height=500')">
+                            <button class="category-item-button" name="category" value=<%= file %>  >
                                 <i class="icon fa fa-folder-o category-item-icon"></i>
                                 <span class="category-item-text"><%= file %></span>
                             </button>
@@ -113,5 +113,13 @@
 
     </div>
 </div>
+<!-- <script>
+    const runMe = function(event) {
+        // event.preventDefault();
+        setTimeout(function(){
+            window.open('/upload/createFile', '_blank', 'top=100 left=300,width=800,height=500')
+        }, 3000);    
+    }
+</script> -->
 </body>
 </html>
