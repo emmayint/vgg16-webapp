@@ -4,7 +4,7 @@
 
 enlarge buttons in select model page
 upload intuitive
-progress bar
+--progress bar
 bottom buttons "prev" "next" to <a> tag?
 predict-with-visuals.html to ejs
 
