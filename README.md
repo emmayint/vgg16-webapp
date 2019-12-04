@@ -2,7 +2,7 @@
 
 # frontend
 
-enlarge buttons in select model page
+--enlarge buttons in select model page
 upload intuitive
 --progress bar
 bottom buttons "prev" "next" to <a> tag?

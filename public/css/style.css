@@ -147,13 +147,17 @@ body {
 }
 
 .model-type-button {
-    width: 200px;
+    display: flex;
+    flex-direction: column;
+    width: 250px;
     margin: .5rem;
-    background-color: #ddd;
+    background-color: #ffe69d;
     /* background-color: rgb(245, 245, 245); */
     border: 1px solid rgb(227, 227, 227);
     border-radius: 2px;
-    box-sizing: border-box
+    box-sizing: border-box;
+    padding-bottom: 2rem;
+    padding-top: 2rem;
 }
 
 .model-type-button:hover {
@@ -164,10 +168,14 @@ body {
 
 .model-type-button-name {
     margin-top: 1rem;
+    font-size: 4rem;
+    font-weight: 500;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .model-type-button-description {
-    
+    font-size: 1.65rem;
 }
 
 .select-category-text {
