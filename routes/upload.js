@@ -5,9 +5,10 @@ let path = require("path");
 var fs = require("fs");
 // const db = require('../database/db');
 
+var projectName;
 var uploadDir = "";
 var category = "";
-
+var datasetsDir = "";
 // Setting up upload function using multer
 let uploadTrain = multer({
   storage: multer.diskStorage({
@@ -23,53 +24,57 @@ let uploadTrain = multer({
 
 // Add middleware to the route
 router.get("/", function(req, res) {
-  let datasets = "datasets/train";
-  let dirBuf = Buffer.from(datasets);
-  fs.readdir(dirBuf, (err, files) => {
-    if (err) {
-      console.log(err.message);
-    } else {
-      console.log("category:", category, "files", files);
-      res.render("upload", { category: category, files: files });
-    }
-  });
+  if (datasetsDir != "") {
+    let dirBuf = Buffer.from(datasetsDir);
+    fs.readdir(dirBuf, (err, files) => {
+      if (err) {
+        console.log(err.message);
+      } else {
+        console.log("category:", category, "files", files);
+        res.render("upload", {
+          category: category,
+          files: files,
+          projectName: projectName
+        });
+      }
+    });
+  } else {
+    res.render("upload", {
+      category: category,
+      files: [],
+      projectName: projectName
+    });
+  }
+});
+
+router.post("/nameProject", function(req, res) {
+  console.log("post /nameProject, ", "body:", req.body);
+  projectName = req.body.projectName;
+  datasetsDir = "./" + projectName + "/datasets";
+  console.log("datasetsDir: ", datasetsDir);
+  if (!fs.existsSync(datasetsDir)) {
+    fs.mkdirSync(datasetsDir, { recursive: true });
+  }
+  res.redirect("/upload");
 });
 
 router.post("/createDir", function(req, res) {
-  console.log("post /createDir, ","body:", req.body);
+  console.log("post /createDir, ", "body:", req.body);
   category = req.body.category;
-  uploadDir = "./datasets/train/" + category;
-  console.log("will upload to ", uploadDir);
+  uploadDir = datasetsDir + "/" + category;
+  console.log("uploadDir: ", uploadDir);
   if (!fs.existsSync(uploadDir)) {
     fs.mkdirSync(uploadDir, { recursive: true });
   }
-  let datasets = "datasets/train";
-  let dirBuf = Buffer.from(datasets);
-  fs.readdir(dirBuf, (err, files) => {
-    if (err) {
-      console.log(err.message);
-    } else {
-      res.redirect("/upload");
-      // res.render("upload", { files: files, category: category });
-    }
-  });
+  res.redirect("/upload");
 });
 
 router.post("/createFile", uploadTrain.array("file", 40), function(req, res) {
-  let datasets = "datasets/train";
-  let dirBuf = Buffer.from(datasets);
-  fs.readdir(dirBuf, (err, files) => {
-    if (err) {
-      console.log(err.message);
-    } else {
-      res.redirect("/upload");
-      // res.render("upload", { files: files, category: category });
-    }
-  });
+  res.redirect("/upload");
 });
 
 router.get("/createFile", function(req, res) {
-  console.log("get /createFile,","uploadDir:", uploadDir);
+  console.log("get /createFile,", "uploadDir:", uploadDir);
   res.render("createFile", { uploadDir: uploadDir });
 });
 

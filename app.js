@@ -17,11 +17,13 @@ let uploadRouter = require("./routes/upload");
 let selectModelRouter = require("./routes/selectModel");
 let paramsRouter = require("./routes/params");
 let nameModelRouter = require("./routes/nameModel");
+let predictRouter = require("./routes/predict");
 
 app.use("/upload", uploadRouter);
 app.use("/selectModel", selectModelRouter);
 app.use("/params", paramsRouter);
 app.use("/nameModel", nameModelRouter);
+app.use("/predict", predictRouter);
 
 app.get("/", (req, res) => {
   res.render("home");

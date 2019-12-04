@@ -1,10 +1,10 @@
 let express = require("express");
 let router = express.Router();
 
-global.model = "";
-
 router.get("/", function(req, res) {
-  res.render("selectModel", { model: model });
+  //   res.render("selectModel", {});
+  console.log("router /predict");
+  res.render("predict-with-visuals");
 });
 
 module.exports = router;
