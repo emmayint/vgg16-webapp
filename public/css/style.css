@@ -6,6 +6,10 @@ body {
     background-color: #ffffff;
 }
 
+.logout-link {
+    margin-top: 15px;
+}
+
 .step-title {
     color: #ffffff;
     /* text-align: center; */
@@ -90,6 +94,7 @@ body {
 .footer-nav {
     display: flex;
     justify-content: flex-end;
+    margin-bottom: 4rem;
 }
 
 .nav-button {
@@ -141,7 +146,7 @@ body {
 
 .model-type-button-container {
     display: flex;
-    /* justify-content: center; */
+    justify-content: center;
     padding: 3rem;
 }
 
@@ -161,7 +166,7 @@ body {
     margin: .5rem;
     background-color: #cee6ff;
     /* background-color: rgb(245, 245, 245); */
-    border: 5px solid #000067;
+    /* border: 5px solid #000067; */
     border-radius: 2px;
     box-sizing: border-box;
     padding-bottom: 2rem;
@@ -170,6 +175,13 @@ body {
 }
 
 .model-type-button:hover {
+    border: 5px solid #ffbf00;
+    box-sizing: border-box;
+    background-color:  #cee6ff;
+    color: #000;
+}
+
+.model-type-button-selected {
     border: 5px solid #ffbf00;
     box-sizing: border-box;
     background-color: #fff9e7;
@@ -194,7 +206,7 @@ body {
 
 .upload-steps-container {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     justify-content: space-between;
 }
 

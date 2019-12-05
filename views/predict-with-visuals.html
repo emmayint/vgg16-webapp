@@ -4,19 +4,92 @@
     <title>predict app</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/dc/3.0.4/dc.css">
     <style>
-        * { font-size:30px; }
+        /* * { font-size:30px; } */
+
+
+        html, body {
+            background-color: #40587d;
+            min-height: 100vh;
+            height: 100%;
+            margin: 0;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        .page-content {
+            background-color: #ffffff;
+            max-width: 900px;
+            height: 100%;
+            margin-left: auto;
+            margin-right: auto;
+            padding: 1.5rem 2rem;
+        }
+
+        .predict-instructions {
+            font-size: 1.25rem;
+            font-weight: 500;
+            margin-top: 0;
+        }
+
+        .image-selector {
+            margin-bottom: 2rem;
+        }
+
+        .user-input {
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            display: flex;
+            flex-direction: column;
+        }
+        .predict-button {
+            margin-left: auto;
+            margin-right: auto;
+            font-size: 1.5rem;
+            line-height: 3rem;
+            border: 1px solid #428bca;
+            border: 0;
+            border-radius: 4px;
+            background-color: #428bca;
+            color: #ffffff;
+            width: 25%;
+        }
+
+        .result-charts {
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        #row-chart {
+            max-width: 50%;
+        }
+
+        #pie-chart {
+            max-width: 50%;
+        }
+
+        .result-image {
+            max-width: 600px;
+        }
     </style>
 </head>
 <body>
 <!--     <input type="file" id="ctrl" webkitdirectory directory multiple/> -->
-    <input id="image-selector" type="file">
-    <p>please upload JPG file</p>
-    <button id="predict-button">Predict</button>
-    <div>
-        <div id="row-chart"></div>
-        <div id="pie-chart"></div>
+    <div class="page-content">
+        <div class="user-input">
+            <h1>Predict with Visuals</h1>
+            <p class="predict-instructions">Please upload JPG file then click "predict."</p>
+            <input class="image-selector" id="image-selector" type="file">
+            <button class="predict-button" id="predict-button">Predict</button>
+        </div>
+        <div class="result-charts">
+            <div id="row-chart"></div>
+            <div id="pie-chart"></div>
+        </div>
+        <div class="result-image">
+            <img id="selected-image" style="clear:both;display:block;"  src=""/>
+        </div>
     </div>
-    <img id="selected-image" style="clear:both;display:block;"  src=""/>
     
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
     <script src="https://d3js.org/d3.v5.min.js"></script>
