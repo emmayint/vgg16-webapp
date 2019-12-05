@@ -9,6 +9,7 @@ var projectName;
 var uploadDir = "";
 var category = "";
 var datasetsDir = "";
+var selectedDir = "";
 // Setting up upload function using multer
 let uploadTrain = multer({
   storage: multer.diskStorage({
@@ -34,7 +35,8 @@ router.get("/", function(req, res) {
         res.render("upload", {
           category: category,
           files: files,
-          projectName: projectName
+          projectName: projectName,
+          selectedDir: selectedDir
         });
       }
     });
@@ -42,7 +44,8 @@ router.get("/", function(req, res) {
     res.render("upload", {
       category: category,
       files: [],
-      projectName: projectName
+      projectName: projectName,
+      selectedDir: selectedDir
     });
   }
 });
@@ -69,13 +72,21 @@ router.post("/createDir", function(req, res) {
   res.redirect("/upload");
 });
 
+router.post("/selectDir", function(req, res) {
+  console.log("post /createDir, ", "body:", req.body);
+  category = req.body.category;
+  selectedDir = datasetsDir + "/" + category;
+  res.redirect("/upload");
+});
+
 router.post("/createFile", uploadTrain.array("file", 40), function(req, res) {
   res.redirect("/upload");
 });
 
+// pop up window
 router.get("/createFile", function(req, res) {
-  console.log("get /createFile,", "uploadDir:", uploadDir);
-  res.render("createFile", { uploadDir: uploadDir });
+  console.log("get /createFile,", "selectedDir:", selectedDir);
+  res.render("createFile", { selectedDir: selectedDir });
 });
 
 module.exports = router;

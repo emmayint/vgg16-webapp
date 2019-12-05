@@ -65,8 +65,8 @@
                 <!-- <p>your categories:</p> -->
                 <div class="category-container">
                     <% files.forEach(function(file){ %>
-                        <form class="form category-item" id="<%= file %>" method="POST" action="/upload/createDir" enctype="application/x-www-form-urlencoded" >
-                            <button class="category-item-button" type="submit"  name="category" value=<%= file %>  >
+                        <form class="form category-item" id="<%= file %>" method="POST" action="/upload/selectDir" enctype="application/x-www-form-urlencoded" >
+                            <button class="category-item-button" type="submit"  name="category" value=<%= file %>>
                                 <i class="icon fa fa-folder-o category-item-icon"></i>
                                 <span class="category-item-text"><%= file %></span>
                             </button>
@@ -87,6 +87,7 @@
                     </div>
                 </form>
             </div>
+            <% if(selectedDir!=""){%>
             <div class="step-container upload-container">
                 <h4 class="step-directions-upload">2. Upload file(s).</h4>
                 <form class="form upload-form" method="POST" action="/upload/createFile" enctype="multipart/form-data" >
@@ -108,6 +109,7 @@
                     <!-- </div> -->
                 </form>
             </div>
+            <%}%>
         </div>
 
 
