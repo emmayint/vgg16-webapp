@@ -9,7 +9,7 @@ router.get("/", function(req, res) {
 router.post("/", function(req, res) {
   modelName = req.body.modelName;
   console.log(modelName);
-  res.render("nameModel", { modelName: modelName });
+  res.render("train", { modelName: modelName });
 });
 
 module.exports = router;

@@ -29,7 +29,7 @@
                     <div class="collapse navbar-collapse" id="myNavbar">
                         <ul class="nav navbar-nav navbar-right">
                             <li>
-                                <form class="form" id="form" method="POST" action="/logout">
+                                <form class="form logout-link" id="form" method="POST" action="/logout">
                                     <a href="/logout"
                                         onclick="document.getElementById('form').submit(); return false;"></span>
                                         Logout</a> 
@@ -42,10 +42,34 @@
         </div>
         <br>
         <br>
+        <br>
+        <br>
         <div class="content-container row divtop">
-            <h1 class="step-title">3. Customize model inputs </h1>
+            <!-- progress bar -->
+            <div class="progress-container">
+                <div class="progress-track"></div>
+                <div class="progress-track-completed step3"></div>
+                <div class="complete-bullet"></div>
+                <div class="complete-text">
+                    <span class="step-text">Complete</span>
+                </div>
+                <div id="step1" class="progress-step-complete">
+                    <span class="step-text">Step One</span>
+                </div>
+                <div id="step2" class="progress-step-complete">
+                    <span class="step-text">Step Two</span>
+                </div>
+                <div id="step3" class="progress-step-complete">
+                    <span class="step-text">Step Three</span>
+                </div>
+                <div id="step4" class="progress-step">
+                    <span class="step-text">Step Four</span>
+                </div>
+            </div>
+            <h1 class="step-title">3. Customize model inputs (optional)</h1>
             <div class="step-container">
                 <h4 class="step-directions">Customize model inputs below (optional)</h4>
+                <a onclick="window.open('https://towardsdatascience.com/epoch-vs-iterations-vs-batch-size-4dfb9c7ce9c9', '_blank', 'top=100 left=300,width=800,height=500');"href="/params">what are these hyperparameters?</a>
                 <form  class="params-form" method="POST" action="/params">
                     epoch: <input type="number" name="epoch" min="1" max="20" value= <%= epoch%>>
                     <br>

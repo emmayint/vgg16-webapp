@@ -24,10 +24,13 @@ app.use("/upload", uploadRouter);
 app.use("/selectModel", selectModelRouter);
 app.use("/params", paramsRouter);
 app.use("/nameModel", nameModelRouter);
-app.use("/predict", predictRouter);
+// app.use("/predict", predictRouter);
 
 app.get("/", (req, res) => {
   res.render("home");
+});
+app.get("/predict", (req, res) => {
+  res.redirect("http://localhost:5000/static/predict-with-visuals.html");
 });
 
 app.listen(8000, () => {

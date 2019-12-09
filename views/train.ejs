@@ -66,29 +66,30 @@
                     <span class="step-text">Step Four</span>
                 </div>
             </div>
-            <h1 class="step-title">4. Name and train your model </h1>
+            <h1 class="step-title">training your model "<%= modelName%>"...</h1>
             <div class="step-container">
-                <h4 class="step-directions">Name and train your model</h4>
-                <form class="name-model-form" method="POST" action="/nameModel" >
-                    <label for="modelName">name of your model</label><br>
-                    <input type="text" class="form-control" placeholder="name of your model" name="modelName" required autofocus>
-                    <br>
-                    <button class="name-model-submit-button btn btn-lg btn-primary btn-block" type="submit">
-                        submit and train your model
-                    </button>
-                </form>
-            </div>
-            <div class="footer-nav">
-                <a href="/params">
-                    <button class="nav-button">
-                        Prev
-                    </button>
-                </a>
-                    <!-- <a href="/nameModel">
-                        <button class="nav-button next-button">
-                            Next
-                        </button>
-                    </a> -->
+                <p>
+                    Train on 396 samples, validate on 171 samples 2019-10-21 19:07:23.986221:
+                  </p>
+                  <p>
+                    Profiler session started. 396/396 [==============================] - 30s
+                    77ms/sample - loss: 0.6553 - acc: 0.5833 - val_loss: 0.5686 - val_acc: 0.7251
+                  </p>
+                  <p>
+                    Epoch 2/9 396/396 [==============================] - 29s 74ms/sample - loss:
+                    0.4655 - acc: 0.7929 - val_loss: 0.4708 - val_acc: 0.8304
+                  </p>
+                  <p>
+                    Epoch 3/9 396/396 [==============================] - 30s 77ms/sample - loss:
+                    0.3649 - acc: 0.8409 - val_loss: 0.3863 - val_acc: 0.8363
+                  </p>
+                  <p>
+                    Epoch 4/9 396/396 [==============> ] - 29s 74ms/sample - loss: 0.2460 - acc:
+                    0.9167 - val_loss: 0.3342 - val_acc: 0.8713
+                  </p>
+                  <p>.................</p>
+                  <p>.................</p>
+                  <p>.................</p>
             </div>
         </div>
     </div>

@@ -29,7 +29,7 @@
                     <div class="collapse navbar-collapse" id="myNavbar">
                         <ul class="nav navbar-nav navbar-right">
                             <li>
-                                <form class="form" id="form" method="POST" action="/logout">
+                                <form class="form logout-link" id="form" method="POST" action="/logout">
                                     <a href="/logout"
                                         onclick="document.getElementById('form').submit(); return false;"></span>
                                         Logout</a> 
@@ -42,13 +42,40 @@
         </div>
         <br>
         <br>
+        <br>
+        <br>
+        <!-- content -->
         <div class="content-container row divtop">
+            <!-- progress bar -->
+            <div class="progress-container">
+                <div class="progress-track"></div>
+                <div class="progress-track-completed step1"></div>
+                <div class="complete-bullet"></div>
+                <div class="complete-text">
+                    <span class="step-text">Complete</span>
+                </div>
+                <div id="step1" class="progress-step-complete">
+                    <span class="step-text">Step One</span>
+                </div>
+                <div id="step2" class="progress-step">
+                    <span class="step-text">Step Two</span>
+                </div>
+                <div id="step3" class="progress-step">
+                    <span class="step-text">Step Three</span>
+                </div>
+                <div id="step4" class="progress-step">
+                    <span class="step-text">Step Four</span>
+                </div>
+            </div>
             <h1 class="step-title">1. Choose a model type </h1>
             <div class="step-container">
                 <h4 class="step-directions">Select a model type below.</h4>
+                <a onclick="window.open('https://neurohive.io/en/popular-networks/vgg16/', '_blank', 'top=100 left=300,width=800,height=500');"href="/selectModel">read more about model types</a>
+                <p>you selected model: <%= selectedModel%></p>
                 <div class="model-type-button-container">
                     <!-- <label for="VGG16">VGG16</label><br> -->
-                    <button class="model-type-button" type="button" name="VGG16">
+                    <form method="POST" action="/selectModel" >
+                    <button class="model-type-button" type="submit" name="selectedModel" value="VGG16">
                         <p class="model-type-button-name">
                             VGG16
                         </p>
@@ -58,14 +85,15 @@
                     </button>
                     <br>
                     <!-- <label for="CNN">CNN</label><br> -->
-                    <button class="model-type-button" type="button" name="CNN">
+                    <button class="model-type-button" type="submit" name="selectedModel" value="CNN">
                         <p class="model-type-button-name">
-                            CNN
+                            other CNN
                         </p>
                         <p class="model-type-button-description">
                             multi-layer neural networks to recognize visual patterns directly from pixel images with minimal preprocessing
                         </p>
                     </button>
+                    </form>
                 </div>
                 <!-- <br>
                 <br>
@@ -86,5 +114,18 @@
                 </a>
             </div>
         </div>
-  </body>
+    <script>
+        function onClickHandler(event) {
+            // alert("yo")
+            var elems = document.querySelectorAll(".model-type-button");
+    
+            [].forEach.call(elems, function(el) {
+                el.classList.remove("model-type-button-selected");
+            });
+
+            event.target.parentNode.classList.add("model-type-button-selected")
+        }
+
+    </script>
+    </body>
 </html>
