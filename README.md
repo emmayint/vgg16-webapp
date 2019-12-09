@@ -2,14 +2,11 @@
 
 # frontend
 
+put all projets and categories in upload.ejs in 3 col
 /params add "optional" and link to explanation.
 /upload
 intuitive; show message "file uploaded"
 upload test data (optional)
-
-/selectModel --enlarge buttons
---progress bar
-predict-with-visuals.html to ejs
 
 # backend:
 
