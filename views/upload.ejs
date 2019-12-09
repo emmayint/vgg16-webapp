@@ -118,8 +118,14 @@
                     <% })%>
                 </div>
                 <br>
+<<<<<<< HEAD
                 <h4 class="step-directions-upload">3. Select a category above and upload file(s) to it<span class="required-field">*</span></h4>
                 <% if(selectedDir != ""){%>                    
+=======
+                <% if(category != ""){%>
+                <!-- <div class="choose-files-popup" id="choose-files-popup" > -->
+                    <h4 class="step-directions-upload">3. Choose file(s)<span class="required-field">*</span></h4>
+>>>>>>> 845bd49d693c9ce22d44982e43bc1ffb4df0fed3
                     <form class="form upload-form" method="POST" action="/upload/createFile" enctype="multipart/form-data" >
                             <input
                                 class="choose-files-button"
@@ -132,6 +138,10 @@
                                 upload files
                             </button>
                     </form>
+<<<<<<< HEAD
+=======
+                <!-- </div> -->
+>>>>>>> 845bd49d693c9ce22d44982e43bc1ffb4df0fed3
                 <%}%>
             </div>
         </div>
