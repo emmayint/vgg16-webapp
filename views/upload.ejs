@@ -106,6 +106,8 @@
                         </button>
                     </div>
                 </form>
+                <P>Part of the data in your training datasets will be split out for model accurace testing. If you want to specify your own testing data, click <a>here</a></P>
+
                 <div class="category-container">
                     <% files.forEach(function(file){ %>
                         <form class="form category-item" id="<%= file %>" method="POST" action="/upload/selectDir" enctype="application/x-www-form-urlencoded" >
