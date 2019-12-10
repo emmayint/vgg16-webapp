@@ -72,29 +72,39 @@
                 <h4 class="step-directions">Select a model type below.</h4>
                 <a onclick="window.open('https://neurohive.io/en/popular-networks/vgg16/', '_blank', 'top=100 left=300,width=800,height=500');"href="/selectModel">read more about model types</a>
                 <p>you selected model: <%= selectedModel%></p>
-                <div class="model-type-button-container">
-                    <!-- <label for="VGG16">VGG16</label><br> -->
-                    <form method="POST" action="/selectModel" >
-                    <button class="model-type-button" type="submit" name="selectedModel" value="VGG16">
-                        <p class="model-type-button-name">
-                            VGG16
-                        </p>
-                        <p class="model-type-button-description">
-                            Deep Convolutional Networks for Large-Scale Image Recognition
-                        </p>
-                    </button>
-                    <br>
-                    <!-- <label for="CNN">CNN</label><br> -->
-                    <button class="model-type-button" type="submit" name="selectedModel" value="CNN">
-                        <p class="model-type-button-name">
-                            other CNN
-                        </p>
-                        <p class="model-type-button-description">
-                            multi-layer neural networks to recognize visual patterns directly from pixel images with minimal preprocessing
-                        </p>
-                    </button>
+                <div class="model-type-button-form">
+                    <form  method="POST" action="/selectModel" >
+                        <div class="model-type-button-container">
+                            <!-- <label for="VGG16">VGG16</label><br> -->
+                            <%if(selectedModel==="VGG16"){%> 
+                                <button class="model-type-button model-type-button-selected" type="submit" name="selectedModel" value="VGG16">
+                            <%}else{%> 
+                                <button class="model-type-button" type="submit" name="selectedModel" value="VGG16">
+                            <%}%>
+                                <p class="model-type-button-name">
+                                    VGG16
+                                </p>
+                                <p class="model-type-button-description">
+                                    Deep Convolutional Networks for Large-Scale Image Recognition
+                                </p>
+                            </button>
+                            <br>
+                            <!-- <label for="CNN">CNN</label><br> -->
+                            <%if(selectedModel==="CNN"){%> 
+                                <button class="model-type-button model-type-button-selected" type="submit" name="selectedModel" value="CNN">
+                            <%}else{%> 
+                                <button class="model-type-button" type="submit" name="selectedModel" value="CNN">
+                            <%}%>
+                                <p class="model-type-button-name">
+                                    other CNN
+                                </p>
+                                <p class="model-type-button-description">
+                                    multi-layer neural networks to recognize visual patterns directly from pixel images with minimal preprocessing
+                                </p>
+                            </button>
+                        </div>
                     </form>
-                </div>
+                </div>    
                 <!-- <br>
                 <br>
                 <a href="/">cancel </a>
@@ -114,18 +124,5 @@
                 </a>
             </div>
         </div>
-    <script>
-        function onClickHandler(event) {
-            // alert("yo")
-            var elems = document.querySelectorAll(".model-type-button");
-    
-            [].forEach.call(elems, function(el) {
-                el.classList.remove("model-type-button-selected");
-            });
-
-            event.target.parentNode.classList.add("model-type-button-selected")
-        }
-
-    </script>
     </body>
 </html>
