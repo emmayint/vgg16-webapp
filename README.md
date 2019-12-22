@@ -2,15 +2,15 @@
 
 # frontend
 
-put all projets and categories in upload.ejs in 3 col
-/params add "optional" and link to explanation.
-/upload
+/selectModel CNN not staying focused
 intuitive; show message "file uploaded"
 upload test data (optional)
 
 # backend:
 
-upload.ejs projects and categories in same line
+/params optimizer options? learning rate? default params to overwrite; error measureing funcion? advanced opions.
+/name default and show final name
+append date of training, model type, and params-value (accuracy?) in the modelName
 upload multiple img to predict
 add optional train path/folder
 examin failed test data
@@ -20,8 +20,14 @@ connect to db
 delete dir/category
 flask train app
 
+try diffenrent models on keras
+
 # paper
 
+Jan 6th, prepare for conference, code demo, jupyternote book. environmen setting: google codelab?
+
+//2-3 page proposa in sprint
+proper scientific writing
 alexnet? ImageNet
 Inception changes over time VGG16-19
 ResNet

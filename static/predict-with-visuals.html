@@ -90,14 +90,28 @@
     <!--     <input type="file" id="ctrl" webkitdirectory directory multiple/> -->
     <div class="page-content">
       <div class="user-input">
-        <h1>Predict with Visuals inside views/static</h1>
+        <h1>Predict multiple with Visuals</h1>
+        <h2>
+          epoch:
+          <script>
+            epoch;
+          </script>
+        </h2>
         <p class="predict-instructions">
           Please upload JPG file then click "predict."
         </p>
-        <input class="image-selector" id="image-selector" type="file" />
+        <input
+          class="image-selector"
+          id="image-selector"
+          type="file"
+          multiple
+        />
         <button class="predict-button" id="predict-button">Predict</button>
       </div>
       <br />
+      <p style="font-weight:bold">Predictions</p>
+      <p>control: <span id="control-prediction"></span></p>
+      <p>mutant: <span id="mutant-prediction"></span></p>
       <div class="result-charts">
         <div id="row-chart"></div>
         <div id="pie-chart"></div>
@@ -121,15 +135,20 @@
       let base64Image;
       $("#image-selector").change(function() {
         let reader = new FileReader();
+        // load the selected image with readAsDataURL
+        reader.readAsDataURL($("#image-selector")[0].files[0]); // load selected image and triger the reader.onload below
+
+        // FileReader reads the content of the loaded image file
         reader.onload = function(e) {
-          let dataURL = reader.result;
-          $("#selected-image").attr("src", dataURL);
-          base64Image = dataURL.replace("data:image/jpeg;base64,", "");
-          console.log(base64Image);
+          let dataURL = reader.result; //the image data as a URL that represents the file's data as a base64 encoded string
+          $("#selected-image").attr("src", dataURL); // set the "source" attribute of the selected image = the value of data URL. This causes the image to be displayed on the page
+          base64Image = dataURL.replace("data:image/jpeg;base64,", ""); // set base64 image = the value of data URL without this URL portion (remaining base64 encoded contents of the image file)
+          console.log("uploaded base64Image: ", base64Image);
         };
-        reader.readAsDataURL($("#image-selector")[0].files[0]); // load selected image and triger the onload handler above
         $("#row-chart").empty(); // clear previous text
         $("#pie-chart").empty(); // clear previous text
+        $("#control-prediction").text("");
+        $("#mutant-prediction").text("");
       });
 
       $("#predict-button").click(function() {
@@ -141,6 +160,12 @@
           "http://localhost:5000/predict",
           JSON.stringify(message),
           function(response) {
+            $("#control-prediction").text(
+              response.prediction.control.toFixed(3)
+            );
+            $("#mutant-prediction").text(response.prediction.mutant.toFixed(3));
+
+            // visuals
             let predictions = Object.entries(response.prediction).map(function(
               entry
             ) {

@@ -55,23 +55,23 @@
                     <span class="step-text">Complete</span>
                 </div>
                 <div id="step1" class="progress-step-complete">
-                    <span class="step-text">Step One</span>
+                    <span class="step-text">Choose model</span>
                 </div>
                 <div id="step2" class="progress-step">
-                    <span class="step-text">Step Two</span>
+                    <span class="step-text">Select data</span>
                 </div>
                 <div id="step3" class="progress-step">
-                    <span class="step-text">Step Three</span>
+                    <span class="step-text">Customize inputs</span>
                 </div>
                 <div id="step4" class="progress-step">
-                    <span class="step-text">Step Four</span>
+                    <span class="step-text">Name+train</span>
                 </div>
             </div>
             <h1 class="step-title">1. Choose a model type </h1>
             <div class="step-container">
                 <h4 class="step-directions">Select a model type below.</h4>
                 <a onclick="window.open('https://neurohive.io/en/popular-networks/vgg16/', '_blank', 'top=100 left=300,width=800,height=500');"href="/selectModel">read more about model types</a>
-                <p>you selected model: <%= selectedModel%></p>
+                <%if (selectedModel!=""){%><p>you selected model: <%= selectedModel%></p><%}%>
                 <div class="model-type-button-form">
                     <form  method="POST" action="/selectModel" >
                         <div class="model-type-button-container">
@@ -91,9 +91,9 @@
                             <br>
                             <!-- <label for="CNN">CNN</label><br> -->
                             <%if(selectedModel==="CNN"){%> 
-                                <button class="model-type-button model-type-button-selected" type="submit" name="selectedModel" value="CNN">
+                                <button class="model-type-button model-type-button-selected" type="submit" name="selectedModel" value="other-CNN">
                             <%}else{%> 
-                                <button class="model-type-button" type="submit" name="selectedModel" value="CNN">
+                                <button class="model-type-button" type="submit" name="selectedModel" value="other-CNN">
                             <%}%>
                                 <p class="model-type-button-name">
                                     other CNN

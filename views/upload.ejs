@@ -52,16 +52,16 @@
                 <span class="step-text">Complete</span>
             </div>
             <div id="step1" class="progress-step-complete">
-                <span class="step-text">Step One</span>
+                <span class="step-text">Choose model</span>
             </div>
             <div id="step2" class="progress-step-complete">
-                <span class="step-text">Step Two</span>
+                <span class="step-text">Select data</span>
             </div>
             <div id="step3" class="progress-step">
-                <span class="step-text">Step Three</span>
+                <span class="step-text">Customize inputs</span>
             </div>
             <div id="step4" class="progress-step">
-                <span class="step-text">Step Four</span>
+                <span class="step-text">Name+train</span>
             </div>
         </div>
         <h1 class="step-title">2. Upload files</h1>
@@ -105,22 +105,39 @@
                         </button>
                     </div>
                 </form>
-                <P>Part of the data in your training datasets will be split out for model accurace testing. If you want to specify your own testing data, click <a>here</a></P>
-
+                <%if(hasTestDir){%> <span><strong>Training data:</strong> </span><%}%>
                 <div class="category-container">
-                    <% files.forEach(function(file){ %>
-                        <form class="form category-item" id="<%= file %>" method="POST" action="/upload/selectDir" enctype="application/x-www-form-urlencoded" >
-                            <button class="category-item-button" type="submit" onclick="onClickHandler()" name="category" value=<%= file %> >
+                    <% trainfiles.forEach(function(trainfile){ %>
+                        <form class="form category-item" id="<%= trainfile %>" method="POST" action="/upload/selectDir" enctype="application/x-www-form-urlencoded" >
+                            <button class="category-item-button" type="submit" onclick="onClickHandler()" name="category" value=<%= trainfile %> >
                                 <i class="icon fa fa-folder-o category-item-icon"></i>
-                                <span class="category-item-text"><%= file %></span>
+                                <span class="category-item-text"><%= trainfile %></span>
                             </button>                            
                         </form> 
                         <br>
                     <% })%>
                 </div>
+                <form class="form" id="createTestDir" method="POST" action="/upload/createTestDir" enctype="application/x-www-form-urlencoded" >
+                    <P><strong>Part of the data in your training datasets will be split out for model accurace testing. If you want to specify your own testing data, click 
+                        <a onclick="document.getElementById('createTestDir').submit();">here</a></strong>
+                    </P>
+                </form>
+                <%if(hasTestDir){%> <span><strong>Testing data:</strong> </span>
+                <div class="category-container">
+                    <% trainfiles.forEach(function(trainfile){ %>
+                        <form class="form category-item" id="<%= trainfile %>" method="POST" action="/upload/selectDir" enctype="application/x-www-form-urlencoded" >
+                            <button class="category-item-button" type="submit" onclick="onClickHandler()" name="category" value=<%= trainfile %> >
+                                <i class="icon fa fa-folder-o category-item-icon"></i>
+                                <span class="category-item-text"><%= trainfile %></span>
+                            </button>                            
+                        </form> 
+                        <br>
+                    <% })%>
+                </div>
+                <%}%>
                 <br>
                 <h4 class="step-directions-upload">3. Select a category above and upload file(s) to it<span class="required-field">*</span></h4>
-                <% if(selectedDir != ""){%>                    
+                <% if(selectedCategory != ""){%>                    
                     <form class="form upload-form" method="POST" action="/upload/createFile" enctype="multipart/form-data" >
                             <input
                                 class="choose-files-button"
@@ -128,7 +145,7 @@
                                 type="file"
                                 multiple
                             >
-                            <p class="selected-category-text"> Files will be uploaded to category: <span class="selected-category"><%=  category%></span></p> 
+                            <p class="selected-category-text"> Files will be uploaded to category: <span class="selected-category"><%=  selectedCategory%></span></p> 
                             <button class="btn btn-lg btn-primary btn-block upload-files-button" type="submit">
                                 upload files
                             </button>

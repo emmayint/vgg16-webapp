@@ -19,18 +19,22 @@ let selectModelRouter = require("./routes/selectModel");
 let paramsRouter = require("./routes/params");
 let nameModelRouter = require("./routes/nameModel");
 let predictRouter = require("./routes/predict");
+let testFlaskRouter = require("./routes/testFlask");
 
 app.use("/upload", uploadRouter);
 app.use("/selectModel", selectModelRouter);
 app.use("/params", paramsRouter);
 app.use("/nameModel", nameModelRouter);
 // app.use("/predict", predictRouter);
+app.use("/testFlask", testFlaskRouter);
 
 app.get("/", (req, res) => {
   res.render("home");
 });
 app.get("/predict", (req, res) => {
-  res.redirect("http://localhost:5000/static/predict-with-visuals.html");
+  res.redirect("http://localhost:5000/static/predict-with-visuals.html", {
+    epoch: epoch
+  });
 });
 
 app.listen(8000, () => {
